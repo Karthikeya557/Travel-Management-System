@@ -1,0 +1,13 @@
+- name: Install dependencies locally
+  local_action:
+    module: command
+    cmd: npm install
+  args:
+    chdir: ../path-to-frontend-source
+
+- name: Build frontend locally
+  local_action:
+    module: command
+    cmd: npm run build
+  args:
+    chdir: ../path-to-frontend-source
