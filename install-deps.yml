@@ -1,0 +1,12 @@
+- name: Install Node.js and build tools
+  apt:
+    name:
+      - nodejs
+      - npm
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
