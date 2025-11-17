@@ -1,0 +1,6 @@
+- name: Deploy Travel Management System Frontend
+  hosts: webservers
+  become: yes
+
+  roles:
+    - frontend
