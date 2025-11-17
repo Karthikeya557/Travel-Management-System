@@ -1,0 +1,23 @@
+- name: Upload build directory
+  synchronize:
+    src: "../path-to-frontend-source/build/"
+    dest: "/var/www/travel-frontend/"
+    delete: yes
+    recursive: yes
+
+- name: Configure nginx
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/travel-frontend
+
+- name: Enable nginx site
+  file:
+    src: /etc/nginx/sites-available/travel-frontend
+    dest: /etc/nginx/sites-enabled/travel-frontend
+    state: link
+    force: yes
+
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
